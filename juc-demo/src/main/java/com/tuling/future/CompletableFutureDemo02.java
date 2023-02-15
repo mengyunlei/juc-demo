@@ -40,6 +40,6 @@ public class CompletableFutureDemo02 {
                 System.out.println("执行失败：" + t.getMessage());
                 return "异常xxxx";
             }
-        }).join();
+        }).get();
     }
 }
