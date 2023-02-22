@@ -5,6 +5,8 @@ import org.openjdk.jol.info.ClassLayout;
 import com.tuling.jucdemo.factory.UnsafeFactory;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author Fox
  */
@@ -13,37 +15,16 @@ public class SyncDemo2 {
 
     private static int counter = 0;
 
-    private static String lock = "";
 
-    public static void increment() {
-        synchronized (lock){
-                counter++;
-        }
-    }
-
-    public static void decrement() {
-        synchronized (lock) {
-            counter--;
-        }
-    }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(() -> {
-                for (int i = 0; i < 5000; i++) {
-                    increment();
-                }
-        }, "t1");
-        Thread t2 = new Thread(() -> {
-            for (int i = 0; i < 5000; i++) {
-                decrement();
-            }
-        }, "t2");
-        t1.start();
-        t2.start();
-        t1.join();
-        t2.join();
-
-        //思考： counter=？
-        log.info("counter={}", counter);
+        String url = "https://psfile.ppdai.com/image/2302161703517401886061420.pdf";
+        System.out.println(url.split("com/")[1]);
+        String date = "2022-04";
+        System.out.println(date.split("-").length);
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        map.get("");
+        map.remove("");
+        map.put("","");
     }
 }
